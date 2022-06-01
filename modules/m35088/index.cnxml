@@ -1,0 +1,64 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+
+<title>EEL3111 Project PCB</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m35088</md:content-id>
+  <md:title>EEL3111 Project PCB</md:title>
+  <md:abstract>This is the Printed Circuit Board that is used for student projects in EEL3111 Basic Circuit Theory.</md:abstract>
+  <md:uuid>2379ee02-0da9-4163-83fb-1e3a74f6f9c0</md:uuid>
+</metadata>
+
+<content>
+  <para id="delete_me">Click the following link to view a PDF version of the design files.
+  <link resource="msp430v1.pdf" window="new">Msp430v1</link>.
+<newline count="2"/>
+Click the following link download a .zip folder containing the .CAM and Gerber files required for fabrication.
+  <link resource="Project Outputs for msp430v1.zip">Gerber Files</link>.
+<newline count="4"/>
+<emphasis>Full Composite:</emphasis>
+<media id="composite" alt="composite">
+  <image mime-type="image/jpg" src="../../media/msp430f449r9composite1.jpg"/>
+</media>
+<newline count="4"/>
+<emphasis>Top Overlay:</emphasis>
+<media id="topoverlay" alt="topoverlay">
+  <image mime-type="image/jpg" src="../../media/msp430f449r9gto.jpg"/>
+</media>
+<newline count="4"/>
+<emphasis>Top Copper Layer:</emphasis>
+<media id="topcopper" alt="topcopper">
+  <image mime-type="image/jpg" src="../../media/msp430f449r9gtl.jpg"/>
+</media>
+<newline count="4"/>
+<emphasis>Top Solder Mask:</emphasis>
+<media id="topsoldermask" alt="topsoldermask">
+  <image mime-type="image/jpg" src="../../media/msp430f449r9gts.jpg"/>
+</media>
+<newline count="4"/>
+<emphasis>Bottom Copper Layer:</emphasis>
+<media id="bottomcopper" alt="bottomcopper">
+  <image mime-type="image/jpg" src="../../media/msp430f449r9gbl.jpg"/>
+</media>
+<newline count="4"/>
+<emphasis>Bottom Solder Mask:</emphasis>
+<media id="bottomsoldermask" alt="bottomsoldermask">
+  <image mime-type="image/jpg" src="../../media/msp430f449r9gbs.jpg"/>
+</media>
+<newline count="4"/>
+<emphasis>Drill Layer:</emphasis>
+<media id="drill" alt="drill">
+  <image mime-type="image/jpg" src="../../media/msp430f449r9drill.jpg"/>
+</media>
+<newline count="4"/>
+<emphasis>PCB Outline:</emphasis>
+<media id="outline" alt="outline">
+  <image mime-type="image/jpg" src="../../media/msp430f449r9gko.jpg"/>
+</media>
+<newline count="4"/>
+<emphasis>Schematic: (note clearer version in PDF)</emphasis>
+<media id="schematic" alt="schematic">
+  <image mime-type="image/jpg" src="../../media/schematic.JPG"/>
+</media></para>
+</content>
+
+</document>

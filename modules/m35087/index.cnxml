@@ -1,0 +1,69 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+
+<title>EEL3111 Force Sensor Power Point July 2010</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m35087</md:content-id>
+  <md:title>EEL3111 Force Sensor Power Point July 2010</md:title>
+  <md:abstract>This is a Power Point presentation created by students in a Basic Circuit Theory course at the University of North Florida during Summer 2010. The students were tasked with using a Texas Instruments MSP430 microcontroller along with an analog sensor of their choice to create an embedded system. These students decided to use a resistive force sensor fed into a unity gain buffer and then to the ADC of the msp430. A simple program was created in C that allows the students to show a force in grams on an LCD display when pressure is applied to the sensor.</md:abstract>
+  <md:uuid>b430f4a2-6fb4-470f-82bb-83adcfe665c2</md:uuid>
+</metadata>
+
+<content>
+  <para id="delete_me"><media id="Slide1" alt="Slide1">
+  <image mime-type="image/jpeg" src="../../media/Slide1.JPG"/>
+</media>
+<newline count="3"/>
+<media id="Slide2" alt="Slide2">
+  <image mime-type="image/jpeg" src="../../media/Slide2.JPG"/>
+</media>
+<newline count="3"/>
+<media id="Slide3" alt="Slide3">
+  <image mime-type="image/jpeg" src="../../media/Slide3.JPG"/>
+</media>
+<newline count="3"/>
+<media id="Slide4" alt="Slide4">
+  <image mime-type="image/jpeg" src="../../media/Slide4.JPG"/>
+</media>
+<newline count="3"/>
+<media id="Slide5" alt="Slide5">
+  <image mime-type="image/jpeg" src="../../media/Slide5.JPG"/>
+</media>
+<newline count="3"/>
+<media id="Slide6" alt="Slide6">
+  <image mime-type="image/jpeg" src="../../media/Slide6.JPG"/>
+</media>
+<newline count="3"/>
+<media id="Slide7" alt="Slide7">
+  <image mime-type="image/jpeg" src="../../media/Slide7.JPG"/>
+</media>
+<newline count="3"/>
+<media id="Slide8" alt="Slide8">
+  <image mime-type="image/jpeg" src="../../media/Slide8.JPG"/>
+</media>
+<newline count="3"/>
+<media id="Slide9" alt="Slide9">
+  <image mime-type="image/jpeg" src="../../media/Slide9.JPG"/>
+</media>
+<newline count="3"/>
+<media id="Slide10" alt="Slide10">
+  <image mime-type="image/jpeg" src="../../media/Slide10.JPG"/>
+</media>
+<newline count="3"/>
+<media id="Slide11" alt="Slide11">
+  <image mime-type="image/jpeg" src="../../media/Slide11.JPG"/>
+</media>
+<newline count="3"/>
+<media id="Slide12" alt="Slide12">
+  <image mime-type="image/jpeg" src="../../media/Slide12.JPG"/>
+</media>
+<newline count="3"/>
+<media id="Slide13" alt="Slide13">
+  <image mime-type="image/jpeg" src="../../media/Slide13.JPG"/>
+</media>
+<newline count="3"/>
+<media id="Slide14" alt="Slide14">
+  <image mime-type="image/jpeg" src="../../media/Slide14.JPG"/>
+</media></para>
+</content>
+
+</document>

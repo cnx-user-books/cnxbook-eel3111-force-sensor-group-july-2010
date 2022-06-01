@@ -1,0 +1,126 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>EEL3111 Force Sensor Paper July 2010</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m35086</md:content-id>
+  <md:title>EEL3111 Force Sensor Paper July 2010</md:title>
+  <md:abstract>This is a paper created by students in a Basic Circuit Theory course at the University of North Florida during Summer 2010. The students were tasked with using a Texas Instruments MSP430 microcontroller along with an analog sensor of their choice to create an embedded system. These students decided to use a resistive force sensor fed into a unity gain buffer and then to the ADC of the msp430. A simple program was created in C that allows the students to show a force in grams on an LCD display when pressure is applied to the sensor. This paper details the process that was followed.</md:abstract>
+  <md:uuid>bfbb6a75-a253-4642-bf74-31dcfd66fa5c</md:uuid>
+</metadata>
+
+<content>
+<para id="id1169180368969"><space count="44"/>Force Sensor
+
+</para>
+    
+    <para id="eip-245"><newline/><space count="22"/>Juan Castillo, Mordecai L. Huber, Bernadette Quijano</para><para id="eip-244"><newline/><space count="22"/>College of Computing, Engineering, and Construction</para><para id="eip-958"><newline/><space count="37"/>University of North Florida</para><para id="eip-70"><newline/><space count="45"/>July 2010</para><section id="id1169177379658">
+      <title><emphasis effect="bold">ABSTRACT</emphasis></title>
+      <para id="id1169174602488">This paper will discuss the different elements of our functioning force sensor. These include: the components thereof, sensor physics, accuracy of the device, and possible applications; both present and future.
+<newline count="2"/>
+<emphasis effect="bold">Keywords</emphasis>
+<newline/>
+      Unity Gain Buffer (UGB), Liquid Chrystal Display (LCD), Force Sensor (FSR).</para></section>
+<section id="fs-id6378241"><title>Introduction</title>
+      <para id="id1169182402435">The purpose of this assignment was to build a functioning sensor using the <link url="http://focus.ti.com/docs/prod/folders/print/%09%09%09%09%09%09%09%09%09msp430f449%09%09%09%09%09%09%09%09%09.html">MSP430F449 </link>microprocessor. The sensor should generate an analog to digital signal which can then be displayed on the provided LCD. Our team has constructed a functioning force sensor. The sensor consists of four elements. The first element consists of the various power supplies used to power up the different components of the device. The second element is a voltage divider network which includes a variable resistance force sensor. The third element is an op-amp which functions as a UGB. The final element consists of the <link url="http://focus.ti.com/docs/prod/folders/print/%09%09%09%09%09%09%09%09%09msp430f449%09%09%09%09%09%09%09%09%09.html">MSP430F449</link> microprocessor and its associated LCD. Together these four elements can detect and output the magnitude of a force applied to the sensing element (see fig. 1). </para>
+      
+<media id="id1169180083809_media" alt="">
+          <image mime-type="image/png" src="../../media/Picture 4.png" id="id1169180083809__onlineimage" height="132" width="334"/>
+        </media>
+      </section>
+      <section id="fs-id1167807847242">
+      
+      <title>Power Supplies</title><para id="id1169188647056">The main power source for the device is a single nine volt battery. A simple sliding on-off switch is used to connect the device to the battery when operation is desired. The force sensing voltage divider network requires a five volt supply. A wire is run from the battery to a standard five volt voltage regulator that has been soldered to the board. A separate 3.3 volt supply is required for the MSP430F449 microprocessor and its associated LCD. This is made possible by utilizing the provided 3.3 volt precision voltage regulator that was supplied with the project kit. The 3.3 volt supply also provides the rail voltages for the UGB. This configuration ensures that the maximum signal input to the microprocessor does not exceed 3.3 volts (see fig. 2).</para>
+      <para id="id1169177919732">
+          <media id="id1169175451504_media" alt="">
+            <image mime-type="image/png" src="../../media/Picture 5.png" id="id1169175451504__onlineimage" height="174" width="327"/>
+          </media>
+      </para>
+      </section>
+      <section id="fs-id1171922066405">
+      <title>Voltage Divider Network</title>
+      <para id="id1169178030611">The voltage divider network consists of the above mentioned five volt supply, a variable resistance FSR, and a 10 kilo-ohm resistor. The components are wired as shown below:</para>
+        <media id="id1169176800724_media" alt="">
+          <image mime-type="image/png" src="../../media/Picture 6.png" id="id1169176800724__onlineimage" height="327" width="199"/>
+        </media>
+        </section>
+      <section id="fs-id1168176559286">
+        <title>Force Sensor</title>
+      <para id="id8730002">The FSR used in this device can be purchased online at sparkfun.com. The FSR is a force sensitive resistor with a square, 1.75 x 1.5" sensing area. Its resistance will vary depending on how much pressure is being applied to the sensing area; the harder the force, the lower the resistance. When no pressure is being applied to the FSR its resistance will be larger than 1MΩ [1]. The following is a detailed explanation of the inner workings of the FSR used in our device. In a nutshell the FSR is made up of two enmeshed conductors embedded in a piezosensitive conducting film. The two conductors do not make direct contact with each other. Instead the film acts as a variable resistance barrier between them. This film is a polymer matrix composed of very small conductive elements held in suspension by a non-conducting substance [1]. The sensing film is compressible and elastic. This compressibility allows the position of the conducting elements to change when under the pressure of a load. As the load is applied some of the conducting elements butt up against the surfaces of the enmeshed conductors. In addition, the conducting particles themselves are moved closer together as a result of the downward force. These actions allow the resistance of the sensor as a whole (R<sub>ab</sub>) to decrease under an applied load. Because the film is elastic the conducting film reverts back to its original position and shape when the load is removed. Because there are no semiconductors inside the sensor it is generally impervious to damage by most electromagnetic fields. It should be noted that forces capable of stressing the film or either of the conductors beyond the elastic range can cause irreversible damage to the sensor.</para>
+      <para id="id1169196567880">
+          <media id="id1169180505001_media" alt="">
+            <image mime-type="image/png" src="../../media/Picture 16.png" id="id1169180505001__onlineimage" height="252" width="289"/>
+          </media>
+      </para>
+      <para id="id2008326">Note the term pressure which means force per unit area. While advertised as a force sensor, in reality, the device actually is pressure sensitive. Testing has shown that the same 100 gram weight will cause a greater output voltage swing if the force is concentrated on a smaller area. Based on the above description it should be clear why. Localized high pressure on a given area of the sensor creates a very low resistance bridge between the enmeshed conductors at that point. Spreading the force over a larger area will decrease the resistance of the sensor as a whole but will not result in the very low resistance circuit created under high pressure. </para>
+      </section>
+      <section id="fs-id1168176776214">
+      <title>Operation</title>
+      <para id="id1169192895922">The 10 kilo-ohm resistor allows the circuit to act as a voltage divider. It also restricts the buildup of excessive current flow when pressure is exerted on the sensor. The equation for V<sub>out </sub>is shown below: 
+<newline/></para>
+      <para id="id1169197408153"><emphasis effect="bold">V<sub>out</sub></emphasis> = <media id="id1169183665006_media" alt=""><image mime-type="image/png" src="../../media/graphics1-3d2b.png" id="id1169183665006__onlineimage" height="39" width="132"/></media>
+<newline/></para>
+      <para id="id1169180553471">R<sub>FSR</sub> represents the sensor’s resistance under a given load. In this configuration the output voltage is very small when no load is applied. The voltage increases in a nonlinear fashion with respect to the applied load. This is due to the manner in which the resistance of the FSR changes with the applied load (See figure 4). Note that only as a substantial force is applied does the rate of change of resistance with respect to applied load move towards a constant value. Switching the positions of the two resistors would cause voltage to be at a maximum under no-load conditions.</para>
+        <media id="id1169176915544_media" alt="">
+          <image mime-type="image/png" src="../../media/Picture 2.png" id="id1169176915544__onlineimage" height="225" width="317"/>
+        </media>
+      </section>
+      <section id="fs-id7663747">
+      <title>UGB</title>
+      <para id="id1942060">As discussed above, V<sub>out</sub> is the voltage pickoff from the FSR network. This voltage is sent next to an op-amp that functions as a UGB. This is accomplished by connecting the output to the inverting input terminal [4]. No feedback resistor is used just a copper wire. This connection drives the gain of the amp towards unity and no amplification of the signal occurs. As discussed in class the purpose of this is to isolate the input to the microprocessor from the FSR circuit (fig. 5).</para>
+      <para id="id1169183165458">
+          <media id="id1169187287949_media" alt="">
+            <image mime-type="image/png" src="../../media/Picture 9.png" id="id1169187287949__onlineimage" height="139" width="293"/>
+          </media>
+      </para>
+      <para id="id1169184743445">The op amp we used has the part number TLV2765. It was soldered directly on to the board. The rail voltages are 3.3 volts to the positive and ground (reference voltage) which is applied to the negative. This op amp is a rail-to rail op amp meaning that high fidelity can be achieved even when the input signal (V<sub>out</sub>) is very close to one of the rail voltages [3]. This function is essential because under no-load conditions the input signal to the op-amp is very close to the reference voltage which acts as the negative rail voltage. In fact, during construction of the device we had to hook up multiple op amps before we could find one that was faithful under no load conditions. We could have dedicated a separate -3.3 volt supply to use as the negative rail voltage but selection of this op amp made that unnecessary. Full credit should be given to Mike Toth for solving this design problem. </para>
+      </section>
+      <section id="fs-id8354373">
+        <title>MSP430F449 and LCD </title>
+      <para id="id1169175647175">Up until this point in the circuit the signal representing the force applied was analog. The real magic takes place inside the microprocessor where the signal is converted in to a digital signal which is suitable for display on the LCD. Again we want to give credit to Mike Toth in the lab for doing most of the programming that was required. The MSP430F449 is a microcontroller unit complete with timers, analog to digital converters, and a LCD driver. It also contains memory which can be used to program the device to perform specific functions. The primary use for such a device is to capture analog signals, convert them to digital, and output the digital signal to an LCD or to some other device [2]. They can be purchased or procured as student samples at the Texas Instrument website. Figure six is a flow chart provided by Mike Toth that illustrates the flow of the program we used in this device. Notice the infinite loop (wait forever) and the one second interrupt. The infinite loop tells the program to execute a command with no predefined condition (that is not <emphasis effect="italics">always</emphasis> true). Technically speaking this is like telling a program to run without ever giving it instructions on when to stop. This means that the only way to halt operation is to power down the device using the sliding switch on the front of the package. In C, the programming language used by engineers, there are different ways to exit an infinite loop. You can use the break command to end the cycle when a specific condition is encountered. Another method is to include in the program what is called an interrupt.<newline/></para>
+      <para id="id1169186040913"><newline/>
+<media id="id1169185673543_media" alt="">
+            <image mime-type="image/png" src="../../media/Picture 15.png" id="id1169185673543__onlineimage" height="447" width="298"/>
+          </media>
+      </para>
+      <para id="id6448898">In this case, an interrupt is programmed which tells the device to sample the input from the FSR and UGB network, convert it to digital, and update the LCD with the new information. This interrupt occurs one time per second. What this means is that the sensor is sampled and the LCD is updated only once per second. After the sampling, control is handed back to the loop until the next interrupt occurs. </para>
+      <section id="fs-id1171918436566">
+      <title>The Equation</title>
+      <para id="id1169198028780">Inside the microprocessor the instantaneous value of the analog signal is converted into a digital value and stored under a previously declared floating point variable. The following equation is used to calculate the actual weight in grams of the object on the sensor. The data is displayed on the LCD.<newline/></para>
+      <para id="id1169184589131"><media id="id1169183236797_media" alt="">
+            <image mime-type="image/png" src="../../media/graphics2-9937.png" id="id1169183236797__onlineimage" height="21" width="300"/>
+          </media>
+      <newline/></para>
+      <para id="id1169176946843"><newline/>
+In the equation, “y” equals the weight in grams and “x” is the value stored under the floating point variable that is representative of the analog signal present on the microprocessor’s input pin. This equation was derived from the specifications sheet of the FSR when using a ten kilo-ohm resistor (See figure seven, use the purple plot). Using a different resistor might have allowed the use of a simpler equation. Bear in mind however that the rail voltage to the UGB was only 3.3 volts. This was necessary because 3.3 volts was the max allowable input to the microprocessor. The 10 kilo-ohm resistor yields a maximum output very close to 3.3 volts and was thus ideal.
+<newline/></para>
+        <media id="id1169176856103_media" alt="">
+          <image mime-type="image/png" src="../../media/Picture 13.png" id="id1169176856103__onlineimage" height="248" width="314"/>
+        </media>
+      <para id="id1169193014861"><newline/>Because the equation is cumbersome it takes the microprocessor some time to crunch the numbers. Mike Toth suspected that this is the cause of the flickering on the LCD. It turns out that the microprocessor we used is better suited for solving linear or quadratic equations in any efficient manner.</para>
+      </section>
+      </section>
+      <section id="fs-id1171918436631">
+        <title>Accuracy of the device</title>
+      <para id="id1169178694037">What we have described is the inner workings of a device that can sense and output the magnitude of a force applied to its sensing element. The range of the device is between zero and 890 grams. Ideally the device should take measurements up to 1000 grams however the UGB becomes saturated before that is allowed to occur. The device is not terribly accurate but definitely can be used to get the sense that a force is being applied to the FSR. Some of the ways that accuracy can be improved are as follows. Firstly, we could invest in a more expensive sensor (we bought ours for $7.95). Secondly, we could do more testing to fine tune the equation used in the calculation. A piecewise continuous function might be more suitable. Finally, one of the main flaws in the device is the fact that pressure is not evenly applied across the entire sensing area. Some type of mechanism that evenly distributes the weight across the FSR is sure to boost the accuracy of the device (see figure 8).</para>
+        <media id="id1169180846583_media" alt="">
+          <image mime-type="image/png" src="../../media/Picture 17.png" id="id1169180846583__onlineimage" height="245" width="300"/>
+        </media>
+      </section>
+      <section id="fs-id1171918436675">
+      <title>Applications and Conclusion</title>
+      <para id="id1169174051816">There are many different applications for force sensors that function in a manner similar to ours. The first one that comes to mind is the scale. The compact, rugged, and inexpensive nature of our sensor lends itself very well to those small digital scales used for weighing food portions. The only issue with the scale is that usually a high degree of accuracy is expected. Assuming we can correct that about our device a scale would be a perfect application for our creation. In all branches of engineering smart applications are the ways of the future. Force sensors can be a part of many different types of “smart” infrastructure. Roads and bridges are great places to incorporate force sensors. Transportation engineers could use them to gauge strain on roadways and electrical engineers could incorporate them into the design of the new red light camera systems that are coming our way soon. If they were only activated as car approaches their efficiency in terms of tickets per kilo-joule could be increased. In the near future force sensors may find their way into advanced applications such as robotics. Japan is the world leader in developing human like robots called androids. One of the more difficult tasks in mimicking human behavior is the act of walking. Most walking robots today have flat feet and lack the grace that humans have as they glide across a room. Instead they kind of lumber along. Force sensors could be a key element in developing a life-like walking android. Think about all of the nerve endings we have in our toes and feet that help us walk without any real effort. To conclude, this has been an excellent first opportunity to explore the possibilities that modern electronics has to offer. We look forward to taking it to the next level and one day implementing such technology in the field!</para>
+</section>
+<section id="fs-id1168178692464">
+      <title>References</title>
+      <para id="id1169178958539">[1]<link url="http://www.sparkfun.com/datasheets/Sensors/Pressure/fsrguide.pdf">http://www.sparkfun.com/datasheets/Sensors/Pressure/fsrguide.pdf</link>
+<newline/>
+[2]<link url="http://focus.ti.com/lit/ds/symlink/msp430f449.pdf">http://focus.ti.com/lit/ds/symlink/msp430f449.pdf</link>
+<newline/>
+[3]<link url="http://www.swarthmore.edu/NatSci/echeeve1/Ref/SingleSupply/SingleSupply.html">http://www.swarthmore.edu/NatSci/echeeve1/Ref/SingleSupply/SingleSupply.html</link>
+<newline/>
+[4]<link url="file:///C:%5CUsers%5CBernadette%5CAppData%5CLocal%5CMicrosoft%5CWindows%5CTemporary%20Internet%20Files%5CLow%5CContent.IE5%5CX5LNJY1C%5C%5Dhttp:%5Cwww.facstaff.bucknell.edu%5Cmastascu%5Celessonshtml%5COpAmps%5COpAmp3Note1Buffer.html">http://www.facstaff.bucknell.edu/mastascu/elessonshtml/OpAmps/OpAmp3Note1Buffer.html</link></para>
+      
+      
+      
+</section>
+  </content>
+</document>

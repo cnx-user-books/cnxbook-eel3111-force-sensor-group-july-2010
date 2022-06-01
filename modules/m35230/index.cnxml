@@ -1,0 +1,182 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+
+<title>EEL3111 Code Listing</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m35230</md:content-id>
+  <md:title>EEL3111 Code Listing</md:title>
+  <md:abstract>This module contains the C code for the Force Sensor example.</md:abstract>
+  <md:uuid>e7b3bba9-a81f-43c6-a82c-360323b52222</md:uuid>
+</metadata>
+
+<content>
+  <para id="delete_me">The following link contains all of the files necessary to compile the project using IAR Embedded Workbench. The zip file contains main.c lcd.c and lcd.h <link url="Code Listing.zip">Code Listing.zip</link>
+<newline count="2"/>
+To view the code listings for lcd.c and lcd.h please download the zip file and open them in any text editor.
+
+<code id="EEL3111" display="block">
+/*************************************************
+* EEL3111 Student Project - Force Sensor Group
+* Code by: Michael Toth
+* Questions: totm0001@unf.edu
+*************************************************/
+
+#include "msp430x44x.h"
+#include "lcd.h"
+#include "math.h"
+
+#define Average 4  // This value controls the number of samples
+                   // to be taken before an average is computed
+                   // and the LCD is updated.
+#define Vref 3.3   // Don't change this unless you know what you are doing
+
+volatile unsigned int x=1;
+long int ADC0;
+float ADC0Averaged;
+float ADC0temp;
+float Voltage;
+float Converted;
+unsigned int hundreds, tens, ones, tenths;
+
+
+/************************************
+* Function Prototypes
+************************************/
+void clock_config(void);
+void adc12_config(void);
+//void opamp_enable(int);
+void update_lcd(void);
+float convert_value(float);
+void extract_digits(float);
+
+/************************************
+* Main Loop
+************************************/
+void main(void)
+{
+  clock_config();   // Configure clock
+  adc12_config();   // Configure ADC12
+ // opamp_enable(1);  // 1=enabled 0=disabled
+  setupLCD();       // Called from lcd.c, performs LCD setup
+  lcd_all(0);       // clear the LCD
+
+  // Enable interrupts and go to sleep forever
+  _EINT();
+  
+  while(1){
+    _NOP();   // loop forever but still servicing interrupts    
+  }
+}
+
+/************************************
+* Clock Configuration Subroutine
+************************************/
+void clock_config(void){  
+  WDTCTL = WDTPW + WDTHOLD;         // Stop WDT
+  FLL_CTL0 |= XCAP10PF;             // Configure load caps
+  BTCTL = BT_ADLY_250;              // 250ms Interrupt
+  IE2 |= BTIE;                      // Enable BT interrupt
+}
+
+/************************************
+* ADC12 Configuration Subroutine
+************************************/
+void adc12_config(void){
+  ADC12IE |= 0x01;                      // Enable ADCMEM0 interrupt
+  ADC12CTL1 = ADC12SSEL_2 | SHP;        // ADCCLK = mCLK, pulse mode
+  ADC12MCTL0 = SREF_0 | INCH_0;         // Vr+=AVcc and Vr-=AVss 
+  // warm-up the ADC
+  ADC12CTL0 = REFON | ADC12ON;          // turn on ref and ADC
+  ADC12CTL0 |= ENC;                     // enable conversions
+}
+
+/************************************
+* Opamp Enable Subroutine:
+* The project board includes a place for
+* a surface mounted opamp. The opamp has
+* a pin that must be set high for the opamp
+* to function. The pin is connected to P2.7
+* by setting P2.7 high the opamp is enabled,
+* low the opamp is disabled
+************************************/
+/*
+void opamp_enable(int x){
+  P2DIR |= BIT7; // Set P2.7 to output direction
+    if(x==1){
+    P2OUT |= BIT7;  // set P2.7 high. Enables Opamp
+    }
+*/
+
+/**************************************
+* Update LCD Subroutine
+**************************************/
+void update_lcd(void){
+    lcd_char(0,ones + '0');
+    lcd_char(1,tens + '0');
+    lcd_char(2,hundreds + '0');
+}
+
+/**************************************
+* Convert Value Subroutine:
+* Convert from voltage to sensor value.
+* Formulas usually available in datasheet
+* for specific sensors.
+***************************************/
+float convert_value(float voltage){
+  float value;
+  value = 14.609*pow(voltage,4)-38.65*pow(voltage,3)+47.017*pow(voltage,2)+10.847*voltage-0.2188; 
+  return value;
+}
+
+/***************************************
+* Extract Digits Subroutine:
+* The LCD driver requires that each digit
+* be presented to the LCD individually. i.e.
+* if you want to display 3.14 on the LCD 3, 1,
+* and 4 must be held in seperate variables.
+* This algorithm assumes only positive values....
+* xxx.xx can be represented
+****************************************/
+void extract_digits(float converted){
+    hundreds = (int)converted / 100; // extract hundreds digit
+    tens = (int)((converted - (hundreds*100)) / 10); // extract tens digit 
+    ones = (int)converted - hundreds*100-(tens * 10); // extract ones digit 
+}
+
+/************************************
+* Interrupt Subroutines
+************************************/
+// Basic Timer interrupt service routine
+#pragma vector=BASICTIMER_VECTOR
+__interrupt void basic_timer(void)
+{
+    // start a conversion
+    // when conversion is complete ADC12 interrupt will take place
+    ADC12CTL0 |= ADC12SC;
+}
+
+// ADC12 Interrupt Service Routine
+#pragma vector=ADC12_VECTOR
+__interrupt void ADC12ISR (void)
+{
+  ADC0 = ADC12MEM0;         // IFG is cleared
+  ADC0temp+=ADC0;          // accumulate values to average
+  if(x==Average){          // test if enough values have been collected
+    ADC0Averaged=ADC0temp/Average;   // compute the average value
+    Voltage=ADC0Averaged*Vref;   // multiply by Vref to obtain voltage representaion
+    Voltage=Voltage/4095;  // divide by #quantization levels
+    Converted=convert_value(Voltage); // Convert voltage to appropriate units
+    extract_digits(Converted); // Extract individual digits
+    update_lcd();  // Update the LCD display    
+    x=1;      // Reset the averaging loop
+    ADC0temp=0;
+  }
+  else{
+    x++;                  
+  }
+}</code>
+
+
+  </para>
+</content>
+
+</document>

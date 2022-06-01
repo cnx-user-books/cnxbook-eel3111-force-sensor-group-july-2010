@@ -1,0 +1,295 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>EEL3111 Student Tutorial</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m35173</md:content-id>
+  <md:title>EEL3111 Student Tutorial</md:title>
+  <md:abstract>This is a short tutorial created by a student at the University of North Florida to help familiarize students with constructing the PCB and Flashing a program onto the microcontroller using IAR Embedded Workbench.</md:abstract>
+  <md:uuid>3c29e907-485c-4394-bab3-981ee07144ad</md:uuid>
+</metadata>
+
+<content>
+<para id="fs-id1165416566128"><space count="40"/>Electrical Engineering
+<newline/>
+
+</para><para id="eip-834"><space count="38"/>University of North Florida
+<newline/>
+</para><para id="eip-865"><space count="36"/><emphasis>Embedded System Design</emphasis>
+<newline/>
+</para><para id="eip-158"><space count="35"/>TI MSP430F449 Microcontroller
+</para><para id="eip-160"><space count="20"/>
+<media id="graphics1" alt="">
+       <image mime-type="image/png" src="../../media/graphics1-3e91.png" height="174" width="327"/>
+</media>
+<newline count="2"/>
+<space count="34"/><emphasis>Mike Toth and Rasem Mourad</emphasis><newline/>
+<space count="41"/><emphasis>August 2010</emphasis>
+<newline count="3"/>
+
+</para><section id="eip-69"><title>Table of Contents</title><para id="eip-293">
+<list id="TOC">
+  <title>Topic:</title>
+  <item>Background</item>
+  <item>Introduction</item>
+  <item>Board Construction</item>
+  <item>Soldering</item>
+  <item>Soldering Surface Mounted Components</item>
+  <item>Soldering the MSP430</item>
+  <item>Mounting the LCD Display</item>
+  <item>Order for Soldering Components to Board</item>
+  <item>Sample Devices From Industry</item>
+  <item>Texas Instruments' MSP430F449 Samples</item>
+  <item>Sensors</item>
+  <item>Project Software</item>
+  <item>Programming the MSP430F449</item>
+  <item>Appendix</item>
+</list> 
+</para></section><section id="eip-795"><title>Background:</title><para id="eip-36">The purpose of the student tutorial is to introduce and familiarize the user with the Embedded System Design utilizing the TI MSP430F449 microcontroller. In addition, the student tutorial serves as a guide on how to assemble the Printed Circuit Board (PCB) along with a sensor of choice. The guide also includes an introduction on programming the TI MSP430F449 using the Embedded IAR Workbench. The student will need the Flash Emulation Tool (FET) kit purchased from Texas Instruments that allows connection from the Personal Computer (PC), where the software or micro program is developed, to the PCB the student constructs. Basically, the student downloads or <quote display="inline">Flashes</quote> the micro program to the MSP430F449 Flash nonvolatile memory. More information about the TI MSP430F449 microprocessor is available at
+<link url="http://www.ti.com/" window="new">http://www.ti.com</link>. Under Products, click on Analog and Mixed Signal MSP430 Ultra-Low-Power MCU. 
+</para><para id="eip-300">The parts kit allows the student to build a circuit board with the TI MSP430F449 microprocessor, a sensor of choice, along with an LCD display. The micro program to for the TI MSP430F449 is mostly developed in the C programming language with the aid of a software package, the Embedded IAR Workbench. </para><para id="eip-625">After the PCB is constructed, a micro program with a message such as HELLO to be displayed on the LCD is prepared and placed in Flash memory, (<quote display="inline">flashed</quote>). A valid message on the LCD indicates that the soldering was correct and the circuits are functioning. After some familiarity is developed with the system, the student is responsible for connecting a sensor to the PCB and writing the software (micro program) that allows the sensor to display a reading on the LCD. </para><para id="eip-487">This student tutorial is intended for the student to have fun and to learn how to use a microprocessor to design an Intelligent Sensor. This serves as a foundation to build upon for later courses and to stimulate an interest in the art of Embedded System Design.</para></section><section id="eip-754"><title>Introduction:</title><para id="eip-126"><list id="purpose">
+  <title>The purpose of this student project is multi-fold.</title>
+  <item>It provides the opportunity to work as a member of a team.</item>
+  <item>The student starts by learning to interpret a printed circuit board (PCB) layout. Several components will be provided to mount (solder) on to this board.</item>
+  <item>Learn some basic skills of making ultra-find solder connections.</item>
+  <item>Learn some basic steps of troubleshooting a printed circuit board (PCB).</item>
+  <item>Pull-together files to form a project and compile and link the programs of the project.</item>
+  <item>Introduction to the IAR debugging tool.</item>
+  <item>Learn to flash software to the microprocessor mounted on the PCB.</item>
+  <item>Select a sensor and learn the characteristics of the sensor.</item>
+  <item>Write a program to allow the student to read the analog voltage of a sensor into the MSP430F449 and display the signal in appropriate units on the PCB’s LCD.</item>
+  <item>The expected outcome from this tutorial is that the student becomes familiar, at a first level, on how several aspects of engineering (hardware construction, software development, sensors) are brought together to form an intelligent sensor.</item>
+</list>
+</para></section><section id="eip-45"><title>Board Construction:</title><para id="eip-758">Table 1 shows a list of parts that are needed to carry out the main objectives in the student tutorial. Be sure to take an inventory of the items listed in Table 1.
+</para><para id="eip-0">There are soldering stations and microscopes available to accomplish the student tutorial. A microscope is necessary to see how to do the soldering work. This will be realized as practice in soldering is done often and over time. Solder and flux are provided with the soldering stations.</para><para id="eip-384">The student is expected to solder two surface mounted 0.1 uF capacitors to the printed circuit board. In addition, the user is expected to solder all 100 pins of the MSP 430F449 package to the printed circuit board.</para><table id="eip-720" summary="This table list the parts and quantities needed to construct the student printed circuit board.">
+<tgroup cols="3"><tbody>
+  <row>
+    <entry align="center">Item #</entry>
+    <entry align="center">Description (Digikey)</entry>
+    <entry align="center">Quantity</entry>
+  </row>
+  <row>
+    <entry align="center">1</entry>
+    <entry align="center">MHC14K-ND: JTAG Connector</entry>
+    <entry align="center">1</entry>
+  </row>
+  <row>
+    <entry align="center">2</entry>
+    <entry align="center">EG1868CT-ND: Push Button Switch</entry>
+    <entry align="center">1</entry>
+  </row>
+  <row>
+    <entry align="center">3</entry>
+    <entry align="center">CP-102A-ND: Power Connector</entry>
+    <entry align="center">1</entry>
+  </row>
+  <row>
+    <entry align="center">4</entry>
+    <entry align="center">LM2937IMP-3.3CT ND: Voltage Regulator</entry>
+    <entry align="center">1</entry>
+  </row>
+  <row>
+    <entry align="center">5</entry>
+    <entry align="center">CT2192MST-ND: Switch 2 position</entry>
+    <entry align="center">1</entry>
+  </row>
+  <row>
+    <entry align="center">6</entry>
+    <entry align="center">300-1001-ND: 32.7 kHz Crystal</entry>
+    <entry align="center">1</entry>
+  </row>
+  <row>
+    <entry align="center">7</entry>
+    <entry align="center">399-1249-1-ND: 0.1uF SMD capacitor</entry>
+    <entry align="center">3</entry>
+  </row>
+  <row>
+    <entry align="center">8</entry>
+    <entry align="center">399-1296-1–ND: 1uF SMD capacitor</entry>
+    <entry align="center">1</entry>
+  </row>
+  <row>
+    <entry align="center">9</entry>
+    <entry align="center">311-47kECT-ND: 100 kohm resistor</entry>
+    <entry align="center">2</entry>
+  </row>
+  <row>
+    <entry align="center">10</entry>
+    <entry align="center">SBLCDA2: LCD Display</entry>
+    <entry align="center">1</entry>
+  </row>
+  <row>
+    <entry align="center">11</entry>
+    <entry align="center">circuit board - no mask - practice soldering</entry>
+    <entry align="center">1</entry>
+  </row>
+  <row>
+    <entry align="center">12</entry>
+    <entry align="center">circuit board - with mask - final product</entry>
+    <entry align="center">1</entry>
+  </row>
+  <row>
+    <entry align="center">13</entry>
+    <entry align="center">miscellaneous 24 gauge wire</entry>
+    <entry align="center">2</entry>
+  </row>
+  <row>
+    <entry align="center">14</entry>
+    <entry align="center">TI MSP430F449IPZ chip</entry>
+    <entry align="center">1</entry>
+  </row>
+</tbody>
+
+
+
+
+
+</tgroup><caption>Inventory of Parts</caption>
+</table></section><section id="eip-832"><title>Soldering:</title><para id="eip-121">
+Avoid breathing the fumes from the solder. The solder is rosin core with a certain percentage of lead (about 2%). It is not healthy to breathe these fumes. Read the label on the soldering tube provided with the soldering station and use the precautions given on the label.
+</para><para id="eip-413">Set the temperature of the soldering station to 800 F. After the tip has reached this temperature, dip the tip of the iron into the tinning paste. Clean the tip with the sponge that comes with the station (add water to the sponge). After this step you may want to take a knife blade and lightly scrape the tip of the iron. Repeat dipping the tip in the tinning past and cleaning the tip on the sponge until the lower 1/4 inch of the tip is <quote display="inline">silvered.</quote> A clean silvered tip is the first indication that the tool has passed the first necessary step toward being properly tinned. Next, touch a strand of solder to the tip. If the solder balls up and drops from the tip, then the tip is not properly tinned. Repeat the above steps until the solder will stick to the tip. At that point the tip is properly tinned and ready for use. Another thing; when you are through soldering, always clean the tip before turning off the station. You might want to take the edge of a knife blade and lightly scrape the tip. Be careful when using the soldering iron. Soldering iron burns hurt! So does melted solder that splashes on you! </para></section><section id="eip-819"><title>Soldering Surface Mounted Components:</title><para id="eip-965">Figure 1 illustrates a top view representation of the PCB utilized to mount the MSP430F449 and the SoftBaugh LCD among other components.<newline count="2"/> 
+<figure id="figure1" type="board"><media id="graphics2" alt="">
+    <image mime-type="image/png" src="../../media/graphics2-a23f.png" height="174" width="327"/>
+  </media>
+  <caption>Illustration of the MSP430F449 board.
+  </caption></figure>
+<newline/>
+
+</para><para id="eip-470">Now consider soldering a surface mounted (SMD) device such as the MSP430F449, a resistor or capacitor to a board. The PCB has a solder pad or tab for each end of the SMD pads to rest. This is indicated in Figure 2.<newline count="2"/>
+<figure id="figure2" type="board"><media id="graphics3" alt="">
+    <image mime-type="image/png" src="../../media/graphics3.png" height="174" width="327"/>
+  </media>
+  
+<caption>Illustrating surface mounted component on a board.
+  </caption></figure>
+<newline/></para><para id="eip-357">The PCB pads are thin and most often do not provide enough solder for connecting the SMD component. Before placing the SMD component on the board, one should flux and lightly tint each tab. To do this, take a toothpick or similar object and deposit and ever so slight amount of flux on each pad. Next, place the tip of the soldering iron in the tinning paste, remove and clean on the sponge. Now touch the tip to a strand of solder and tin-up the tip of the iron. Focus in on the tabs and bring the tip of the iron over one of the tabs. Touch the tip of the iron to the tab and slight rub the tip over the tab to deposit a thin layer of solder that should bond with the board tab. Do this to each tab. Now take a pair of tweezers and hold the SM component in place. Bring the tip of the iron to one edge of the tab and melt the solder. Figure 3 illustrates the tab for each pin of the MSP430F449 soldered onto the board.<newline count="2"/>
+<figure id="figure3" type="board"><media id="graphics4" alt="">
+    <image mime-type="image/png" src="../../media/graphics4.png" height="174" width="327"/>
+  </media>
+  <caption>Soldered in place MSP430F449.
+  </caption></figure>
+<newline/></para><para id="eip-108">Do not touch the tip to the SMD component. As the solder on the tab melts, the solder on the tip of the SMD component will also melt. In order to observe all this, a microscope will be needed. Remove the tip of the iron but hold the component in place, momentarily, for the solder to cool and set. Remove the tweezers and repeat the process at the other end of the component. Most often there is a good bond and no further soldering is required. Furthermore, there is a slight change in the procedure for mounting polarized capacitors. This slight change is illustrated in Figure 4.<newline count="2"/>
+<figure id="figure4" type="board"><media id="graphics5" alt="">
+    <image mime-type="image/png" src="../../media/graphics5.png" height="174" width="327"/>
+  </media>
+  <caption>Drawing showing surface mounted polarized capacitor.
+  </caption></figure><newline/></para><para id="eip-483">Also, on many polarized capacitors the two small solder tabs have the same size. In this case the backside of the capacitor will have a small stripe to indicate the + (positive) terminal of the capacitor. One should always check the source catalog for this information if it is not clear which side is positive.</para></section><section id="eip-862"><title>Soldering the MSP430 to the Board:</title><para id="eip-237">
+The MSP 430F449 is a very fine-pitch chip. That is, the connect point to the chip are numerous and very close together. There are 25 connect points on each side of the chip. The chip is roughly 1/2 inch on each side. That is, one is looking at roughly 25 connect points spread over 1/2 of an inch. To mount the MSP 430 to the PCB requires some tedious soldering work.
+</para><para id="eip-452">Start by placing the board on the microscope with the base light and top light of the microscope turned on. This provides heat to the board that will be helpful in the fluxing process. Consider the diagram of Figure 3 that represents the portion of the PCB where the MSP 430 will be mounted.<newline count="2"/>
+<figure id="figure5" type="board"><media id="graphics6" alt="">
+    <image mime-type="image/png" src="../../media/graphics6.png" height="174" width="327"/>
+  </media>
+  <caption>Board pin layout for the MSP430.
+  </caption></figure><newline/></para><para id="eip-669">The student should take an appropriate object such as a toothpick with flux on the tip and place the flux in the shaded areas shown on the circuit traces of Figure 5. Next, place the MSP 430 on the trace pattern above with the MSP 430 centered all-around. This takes a little time. Be careful to align the connect points to the PCB completely around the MSP 430. The notch on the bottom left corner of the MSP 430F indicates the placement of the first pin.<newline count="2"/>
+<figure id="figure6" type="board"><media id="graphics7" alt="">
+    <image mime-type="image/png" src="../../media/graphics7.png" height="174" width="327"/>
+  </media>
+  <caption>Showing the MSP430 placed on circuit traces.
+  </caption></figure><newline/></para><para id="eip-339">With all the connect points of the MSP 430 on top of the corresponding PCB pads, hold things in place and use the soldering iron to tack a connect point of the chip to a trace at pins 25 and 1 as shown above. DO NOT ADD ANY SOLDER TO THE TIP OF THE SOLDERING IRON! Set things up as shown in Figure 5. Apply a touch of flux to the tip of each microchip pin.<newline count="2"/>
+<figure id="figure7" type="board"><media id="graphics8" alt="">
+    <image mime-type="image/png" src="../../media/graphics8.png" height="174" width="327"/>
+  </media>
+  <caption>Soldering technique for connecting MSP430 to traces on board.
+  </caption></figure><newline/></para><para id="eip-118">At pin 25, shown in Figure 6, continue to hold the chip in place. Place the tip of the soldering iron on the circuit trace as shown above. The solder on the trace will melt. This should temporarily tack the circuit connect point to the trace. Allow the solder joint to cool for about 5 seconds. Continue to hold the chip in place. Move to another corner point on the chip (pin 1) and repeat the above process. At this point the chip should be tacked to the traces and lined up properly. Now move to another connect point (pin 24) and place the tip of an exacto knife on top of the chip connect point as shown in Figure 7. Apply the tip of the soldering iron to the corresponding circuit trace and allowing the solder on the trace to flow. Place the tip of the xacto knife on top of the connect point to the board; remove the soldering iron tip and apply a small pressure (with the xacto knife) to hold the connect point down; allow the junction to cool for a few seconds. </para><para id="eip-872">Then, the above process is continued by moving around the board. A good idea is to pin down connect pin 2 then move to pin 23. This allows connect point at pin 2 to cool for a few seconds before coming back to solder at pin 23 and so on. If at some point there does not seem to be enough solder on the traces to bond to the connect point, try placing the soldering iron tip in the tinning paste. Clean on the sponge. There is usually a slight amount of solder left on the tip. This can be used to add a little solder to the trace. </para><para id="eip-163">After soldering all the pins to the board, the user should check the connections. A good way to do this is to place the tip of your xacto blade to the edge of each pin. Apply a slight amount of pressure to the pin. If the pin moves you know you have a faulty solder connection. Clean and flux the tip of the soldering iron two or three times and then proceed to Re-do the solder joint.</para></section><section id="eip-416"><title>Mounting the LCD Display:</title><para id="eip-491">
+The SoftBaugh LCD display unit has 24 pins on each side. The following procedure establishes one manner in which to mount the unit to the board.
+</para><para id="eip-316">To begin with, the small notch at one end of the LCD should be on the left side when lining up pins on the board. Place the pins on one side of the unit over the corresponding holes on the board. Slightly jiggle the unit until you can get the one side to slide into the holes. There are times when slightly jiggling the unit will result in both sides of the LCD to smoothly slide into the holes of the board. However if this is not the case, do not try to force the pins into the holes. It is fairly easy to get one side of the unit to go into the board. Where the pins emerge from the bottom of the board, keep the tips about flush with the board. Then attempt to line things up with the other side of the LCD. Start at one end and use the tip of a xacto knife to move each pin over the corresponding hole. Continue to move down the pin line and line up the pins with the holes. Once the pins have lined up, the second side will fit in place. Push the LCD in place with the pins protruding from the back of the board. </para><para id="eip-149">Now that the LCD is in place, flip the PCB over and solder the pins to the PCB. To do this bring the solder tip next to a pin; touch the pin with the strand of solder. The solder <quote display="inline">sucks</quote> down into the hole on the PCB. Figure 8 illustrates the SoftBaugh LCD mounted on the board.<newline count="2"/>
+<figure id="figure8" type="board"><media id="graphics9" alt="">
+    <image mime-type="image/png" src="../../media/graphics9.png" height="174" width="327"/>
+  </media>
+  <caption>Mounted SoftBaugh LCD Display.
+  </caption></figure><newline/></para><para id="eip-456">The remaining components are relatively easy to mount to the PCB. In mounting the switches, it is a good idea to apply a small amount of flux to the solder pads and even tin the tips of the switches with a slight amount of solder. This makes it easier to solder the switches to the board.</para><para id="eip-844">The PCB for this project was designed to serve the needs of several projects at the university. Therefore, the board is populated according to the particular project. The lettering on the board identifies the surface mounted capacitors for this tutorial and Figure 9 illustrates the board with most of the essential components mounted.<newline count="2"/>
+<figure id="figure9" type="board"><media id="graphics10" alt="">
+    <image mime-type="image/png" src="../../media/graphics10.png" height="174" width="327"/>
+  </media>
+  <caption>PCB with Components Mounted.
+  </caption></figure><newline/></para></section><section id="eip-315"><title>Order for Soldering Components to Board:</title><para id="eip-66">
+The following order is recommended for soldering components to the board. (1) The MSP430F449. (2) Surface mounted capacitors and resistors next. (3) Push button switch, voltage regulator, 5 volt input plus, slider switch. (4) Now solder in the pins of the JTAG connector. (5) Wait until last to solder in the SoftBaugh LCD. 
+</para>
+</section><section id="eip-164"><title>Sample Devices from Industry:</title><para id="eip-514">
+Most all industries support students in their quest for learning about particular products from their company. Within reason, companies will provide samples of devices for students to use in their projects. There are at least two reasons that come to mind as to why they want to provide this support. First, they support education. Engineers, with good educations, are the foundation or backbone of their company. Second, if students become familiar with their products they are more likely to place orders with them during your professional career.
+</para></section><section id="eip-964"><title>TI MSP430F449 Samples:</title><para id="eip-355">
+This is the micro computer that is utilized in this tutorial. Samples will be provided to students enrolled in the course. The following Texas Instrument URL is where you can order a 3-lot sample of the MSP430F449. Just follow the instructions. Be sure to give a mailing address where UPS/FedEx or order delivery services can deliver a package to you. You cannot use P.0.Boxes. In filling out the request form for parts indicate as necessary that you are a student working on an embedded microcomputer project.
+<newline count="2"/>
+<link url="http://focus.ti.com/docs/prod/folders/print/msp430f449.html#samples" window="new">http://focus.ti.com/docs/prod/folders/print/msp430f449.html#samples</link>
+</para></section><section id="eip-904"><title>Sensors:</title><para id="eip-542">
+After you have constructed your board and you know that you can flash a message to the LCD, the next part is for you to select a sensor for application with the PCB you have built. In particular, you are to connect the output voltage from a sensor you select to an input port to the Analog to Digital converter of the MSP 430. You might select a temperature sensor, a force sensor, a magnetic field measurement sensor and so on. The choice of sensor is left up to you. However, you must find a sensor you want to use and you must order free samples.
+</para><para id="eip-962">There are a number of companies that manufacture sensors. One company is Analog Devices. Their web address is <link url="http://www.analog.com"> http://www.analog.com </link> . Other companies such as Texas Instruments and Freescale also provide sample sensors. </para></section><section id="eip-305"><title>Project Software:</title><para id="eip-97">
+The software required for this tutorial is available on the TI website to download for free. The web address to obtain the software is: <newline count="2"/> <link url="  http://focus.ti.com/docs/toolsw/folders/print/iar-kickstart.html">http://focus.ti.com/docs/toolsw/folders/print/iar-kickstart.html</link><newline count="2"/>
+You will find the software from both IAR and TI that supports the Flash Emulation Tool. You are encouraged to spend some time looking over this material.
+
+</para></section><section id="eip-996"><title>Programming the MSP430F449:</title><para id="eip-369">
+We now explain how to use the above tool to exercise the embedded processor board so that that the LCD displays a count from A-Z.
+</para><para id="eip-352">First connect the 25-pin cable connecter of the FET to the printer port of your PC. Connect the 14-pin connector to the JTAG port on your board. Be sure this cable is connected in the <quote display="inline">Up</quote> position. This is illustrated in Figure 10.<newline count="2"/>
+<figure id="figure10" type="board"><media id="graphics11" alt="">
+    <image mime-type="image/png" src="../../media/graphics11.png" height="174" width="327"/>
+  </media>
+  <caption>Board with 14-pin connector connected to JTAG port.
+  </caption></figure><newline/></para><para id="eip-875"><emphasis><emphasis effect="underline">Step 1</emphasis>:</emphasis> On your PC create the following directory: C:\430project\software. The files required to implement this student tutorial for the MSP430F449 will be given by the instructor. Once given, copy the files to your Computer. <emphasis>These files may include: lcd.c, lcd.h, lcddemo.c.</emphasis></para><para id="eip-986"><emphasis><emphasis effect="underline">Step 2</emphasis>:</emphasis> Take the following path on your PC: <emphasis>Start / Programs / IAR Systems/ IAR Embedded Workbench for MSP430 KickStart/IAR / Embedded Workbench</emphasis>. This will open the screen shown in Figure 11.</para><para id="eip-944"><emphasis><emphasis effect="underline">Step 3</emphasis>:</emphasis> Now click on <emphasis>Project/Create New Project…</emphasis> and you will see the screen shown in Figure 12.</para><para id="eip-522"><emphasis><emphasis effect="underline">Step 4</emphasis>:</emphasis> Now double click on the programming language you will be using for the project and click on main. This step is shown in Figure 13. A Save As dialog box appears. Choose a name to save your project under. </para><para id="eip-702"><emphasis><emphasis effect="underline">Step 5</emphasis>:</emphasis> Once you’ve created your project, this will produce the screen shown in Figure 14.</para><para id="eip-32"><emphasis><emphasis effect="underline">Step 6</emphasis>:</emphasis> Now click on <emphasis>Project/Options…</emphasis> Under category, highlight general options and select which device you will be using for the project. The screen shown in Figure 15 illustrates this step.</para><para id="eip-860"><emphasis><emphasis effect="underline">Step 7</emphasis>:</emphasis> From the screen in Figure 15, under category highlight <emphasis>Debugger</emphasis> and choose the <emphasis>FET Debugger</emphasis> as your driver. This will produce the screen shown in Figure 16.</para><para id="eip-68"><emphasis><emphasis effect="underline">Step 8</emphasis>:</emphasis> Now under category highlight <emphasis>FET Debugger</emphasis>. Choose your connection whether it is USB or not. This is shown in the screen in Figure 17.</para><para id="eip-375"><emphasis><emphasis effect="underline">Step 9</emphasis>:</emphasis> To add the project files, click on <emphasis>Project/Add Files</emphasis>. Highlight all the files needed for the project and click <emphasis>Open</emphasis>. The files will then be added to your workspace. This is illustrated in the screen shown in Figure 18.</para><para id="eip-9"><emphasis><emphasis effect="underline">Step 10</emphasis>:</emphasis> Once the files are downloaded, click on the arrow on the top right screen of your window which means you are ready to download and debug your project. This is shown in Figure 19.</para><para id="eip-780"><emphasis><emphasis effect="underline">Step 11</emphasis>:</emphasis> After building your project, the debugger window opens at the bottom part of your screen. Click on the three arrows encircled in Figure 20 to run the program.</para><para id="eip-17"><emphasis><emphasis effect="underline">Step 12</emphasis>:</emphasis> Provided that the FET cable is inserted to your PC printer port and the JTAG plug on your processor board <emphasis effect="underline">and</emphasis> provided you have built your board correctly, you will see the screen go through a stage of showing that the board is being erased and then show it being programmed. After the programming stage is complete you should see some a count from A-Z scroll across the LCD. 
+<figure id="figure11" type="board"><media id="graphics12" alt="">
+    <image mime-type="image/png" src="../../media/graphics12.png" height="674" width="827"/>
+  </media>
+  <caption>Showing procedure in building software, Step 2.
+  </caption></figure>
+<newline count="2"/>
+<figure id="figure12" type="board"><media id="graphics13" alt="">
+    <image mime-type="image/png" src="../../media/graphics13.png" height="674" width="827"/>
+  </media>
+  <caption>Showing procedure in building software, Step 3.
+  </caption></figure>
+<newline count="2"/>
+<figure id="figure13" type="board"><media id="graphics14" alt="">
+    <image mime-type="image/png" src="../../media/graphics14.png" height="674" width="827"/>
+  </media>
+  <caption>Showing procedure in building software, Step 4.
+  </caption></figure>
+<newline count="2"/>
+<figure id="figure14" type="board"><media id="graphics15" alt="">
+    <image mime-type="image/png" src="../../media/graphics15.png" height="674" width="827"/>
+  </media>
+  <caption>Showing procedure in building software, Step 5.
+  </caption></figure>
+<newline count="2"/>
+<figure id="figure15" type="board"><media id="graphics16" alt="">
+    <image mime-type="image/png" src="../../media/graphics16.png" height="674" width="827"/>
+  </media>
+  <caption>Showing procedure in building software, Step 6.
+  </caption></figure>
+<newline count="2"/>
+<figure id="figure16" type="board"><media id="graphics17" alt="">
+    <image mime-type="image/png" src="../../media/graphics17.png" height="674" width="827"/>
+  </media>
+  <caption>Showing procedure in building software, Step 7.
+  </caption></figure>
+<newline count="2"/>
+<figure id="figure17" type="board"><media id="graphics18" alt="">
+    <image mime-type="image/png" src="../../media/graphics18.png" height="674" width="827"/>
+  </media>
+  <caption>Showing procedure in building software, Step 8.
+  </caption></figure>
+<newline count="2"/>
+<figure id="figure18" type="board"><media id="graphics19" alt="">
+    <image mime-type="image/png" src="../../media/graphics19.png" height="674" width="827"/>
+  </media>
+  <caption>Showing procedure in building software, Step 9.
+  </caption></figure>
+<newline count="2"/>
+<figure id="figure19" type="board"><media id="graphics20" alt="">
+    <image mime-type="image/png" src="../../media/graphics20.png" height="674" width="827"/>
+  </media>
+  <caption>Showing procedure in building software, Step 10.
+  </caption></figure>
+<newline count="2"/>
+<figure id="figure20" type="board"><media id="graphics21" alt="">
+    <image mime-type="image/png" src="../../media/graphics21.png" height="674" width="827"/>
+  </media>
+  <caption>Showing procedure in building software, Step 11.
+  </caption></figure>
+<newline count="2"/></para></section><section id="eip-757"><title>Appendix</title><para id="eip-115">The following specifies the pin-out connections of the MSP430F449 Texas Instrument Mixed Signal Micro controller. Also, a general outline of the physical package is included. For more data on the device, check the following web site.<newline count="2"/>
+<link url="http://focus.ti.com/docs/prod/folders/print/msp430f449.htmi#technicaldocuments">http://focus.ti.com/docs/prod/folders/print/msp430f449.htmi#technicaldocuments</link><newline count="2"/>
+Look under technical documents/data sheets.<newline/>
+<media id="pinout" alt="">
+       <image mime-type="image/png" src="../../media/pinout.PNG"/>
+</media>
+</para></section><section id="eip-789"><title>Acknowledgements:</title><para id="eip-224">
+The University of North Florida (UNF) EE team began using the TI MSP430F449 a number of years ago. Bethune-Cookman University and the University of Tennessee (UT) adopted UNF’s lab kits into their curriculum. Dr. Walter Green, UT Electrical Engineering, had his students prepare a users guide for the lab. UNF students adopted the UT user’s guide and updated it per UNF current embedded system design activities. UNF thanks UT for their help and contribution to this users guide. 
+</para></section>    
+</content>
+</document>

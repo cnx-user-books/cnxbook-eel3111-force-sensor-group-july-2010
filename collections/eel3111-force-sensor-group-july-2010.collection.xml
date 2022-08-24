@@ -1,3 +1,43 @@
-<col:collection xmlns="http://cnx.rice.edu/collxml" xmlns:md="http://cnx.rice.edu/mdml" xmlns:col="http://cnx.rice.edu/collxml" xml:lang="en" type="Course">  <metadata xmlns:md="http://cnx.rice.edu/mdml" mdml-version="0.5">  <md:content-id>col11221</md:content-id>  <md:title>EEL3111 Force Sensor Group July 2010</md:title>      <md:license url="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution License 3.0</md:license>  <md:language>en</md:language>              <md:uuid>2809e0f2-cac9-4aa0-804d-730c23ef9eaf</md:uuid>
-<md:slug>eel3111-force-sensor-group-july-2010</md:slug>
-</metadata>  <col:content>                        <col:subcollection>        <md:title>Paper</md:title>                                <col:content>                    <col:module document="m35086"/>                          </col:content>      </col:subcollection>                            <col:subcollection>        <md:title>Power Point</md:title>                                <col:content>                    <col:module document="m35087"/>                          </col:content>      </col:subcollection>                            <col:subcollection>        <md:title>Tutorial</md:title>                                <col:content>                    <col:module document="m35173"/>                          </col:content>      </col:subcollection>                            <col:subcollection>        <md:title>PCB</md:title>                                <col:content>                    <col:module document="m35088"/>                          </col:content>      </col:subcollection>                            <col:subcollection>        <md:title>C Code Listing</md:title>                                <col:content>                    <col:module document="m35230"/>                          </col:content>      </col:subcollection>      </col:content></col:collection>
+<?xml version="1.0"?>
+<col:collection xmlns="http://cnx.rice.edu/collxml" xmlns:md="http://cnx.rice.edu/mdml" xmlns:col="http://cnx.rice.edu/collxml" xml:lang="en" type="Course" authors="Michael Toth">
+  <metadata xmlns:md="http://cnx.rice.edu/mdml" mdml-version="0.5">
+    <md:content-id>col11221</md:content-id>
+    <md:title>EEL3111 Force Sensor Group July 2010</md:title>
+    <md:license url="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution License 3.0</md:license>
+    <md:language>en</md:language>
+    <md:uuid>2809e0f2-cac9-4aa0-804d-730c23ef9eaf</md:uuid>
+    <md:slug>eel3111-force-sensor-group-july-2010</md:slug>
+  </metadata>
+  <col:content>
+    <col:subcollection>
+      <md:title>Paper</md:title>
+      <col:content>
+        <col:module document="m35086"/>
+      </col:content>
+    </col:subcollection>
+    <col:subcollection>
+      <md:title>Power Point</md:title>
+      <col:content>
+        <col:module document="m35087"/>
+      </col:content>
+    </col:subcollection>
+    <col:subcollection>
+      <md:title>Tutorial</md:title>
+      <col:content>
+        <col:module document="m35173"/>
+      </col:content>
+    </col:subcollection>
+    <col:subcollection>
+      <md:title>PCB</md:title>
+      <col:content>
+        <col:module document="m35088"/>
+      </col:content>
+    </col:subcollection>
+    <col:subcollection>
+      <md:title>C Code Listing</md:title>
+      <col:content>
+        <col:module document="m35230"/>
+      </col:content>
+    </col:subcollection>
+  </col:content>
+</col:collection>
